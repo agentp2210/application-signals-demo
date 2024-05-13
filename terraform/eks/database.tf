@@ -14,7 +14,7 @@ module "db" {
   engine_version       = "16"
   family               = "postgres16" # DB parameter group
   major_engine_version = "16"         # DB option group
-  instance_class       = "db.m4.small"
+  instance_class       = "db.t3.micro"
 
   allocated_storage     = 20
   max_allocated_storage = 100
