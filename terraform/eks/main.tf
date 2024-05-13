@@ -63,7 +63,9 @@ module "eks" {
   #checkov:skip=CKV_AWS_356:demo only, no resource limitation is required
   #checkov:skip=CKV_TF_1:sub-module hash key ignored
 
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=1627231af669796669ce83e0a4672a7e6d94a0b3"
+  #source  = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=1627231af669796669ce83e0a4672a7e6d94a0b3"
+  source  = "terraform-aws-modules/eks/aws"
+  version = "20.10.0"
 
   cluster_version                 = "1.29"
   cluster_name                    = var.cluster_name
@@ -89,7 +91,7 @@ module "eks" {
     default = {
       desired_size = 3
       # iam_role_additional_policies = ["arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"]
-      instance_types = ["t3.large"]
+      instance_types = ["t3.small"]
       tags = {
         Owner = "default"
       }
