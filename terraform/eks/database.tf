@@ -14,7 +14,7 @@ module "db" {
   engine_version       = "16"
   family               = "postgres16" # DB parameter group
   major_engine_version = "16"         # DB option group
-  instance_class       = "db.m4.medium"
+  instance_class       = "db.m4.small"
 
   allocated_storage     = 20
   max_allocated_storage = 100
@@ -34,7 +34,7 @@ module "db" {
   # master_user_password_rotate_immediately           = false
   # master_user_password_rotation_schedule_expression = "rate(15 days)"
 
-  multi_az               = true
+  multi_az               = false
   db_subnet_group_name   = module.vpc.database_subnet_group_name
   vpc_security_group_ids = [module.vpc.default_security_group_id]
 
