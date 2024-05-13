@@ -165,10 +165,11 @@ module "eks" {
 module "demo_service_account" {
   #checkov:skip=CKV_TF_1:sub-module hash key ignored
   source = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  version = "5.39.0"
 
   create_role                   = true
   role_name                     = "DemoServiceRole-${var.cluster_name}"
-  provider_url                  = replace(module.eks.oidc_provider, "https://", "")
+  provider_url                  = module.eks.oidc_provider
   role_policy_arns              = ["arn:aws:iam::aws:policy/AmazonSQSFullAccess", "arn:aws:iam::aws:policy/AmazonS3FullAccess", "arn:aws:iam::aws:policy/AmazonKinesisFullAccess", "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"]
   oidc_fully_qualified_subjects = ["system:serviceaccount:default:visits-service-account"]
 }
