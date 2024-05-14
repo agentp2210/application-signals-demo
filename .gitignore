@@ -8,6 +8,7 @@
 **/terraform.tfstate.backup
 **/.external_modules/
 **/.terraform.lock.hcl
+**/*.tfplan
 
 # python
 **/__pycache__/
