@@ -102,6 +102,10 @@ Please be aware that this sample application includes a publicly accessible Appl
    Change the cluster-name, alias and region if you configure them differently.
 
    ``` shell
+   cd terraform/eks
+   TF_VAR_cluster_name=$(terraform output cluster_name)
+   AWS_REGION=us-east-1
+
    aws eks update-kubeconfig --name $TF_VAR_cluster_name  --kubeconfig ~/.kube/config --region $AWS_REGION --alias $TF_VAR_cluster_name
    ./scripts/eks/appsignals/tf-deploy-k8s-res.sh
 
